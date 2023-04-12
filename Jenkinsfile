@@ -41,7 +41,7 @@ pipeline {
                     def version = (readFile('pom.xml') =~ '<version>(.+)</version>')[0][2]
                     env.IMAGE_NAME = "$version-$BUILD_NUMBER"
 //                     sh "docker build -t bhavyghaghra/spring-boot:${IMAGE_NAME} ."
-                    sh "docker build -t 20it037Bhavy/spring-boot:${IMAGE_NAME} ."
+                    sh "docker build -t 20it037bhavy/spring-boot:${IMAGE_NAME} ."
                         
                     }
             }
@@ -71,7 +71,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
                     sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
 //                     sh "docker push bhavyghaghra/spring-boot:${IMAGE_NAME}"
-                       sh "docker push 20it037Bhavy/spring-boot:${IMAGE_NAME}"
+                       sh "docker push 20it037bhavy/spring-boot:${IMAGE_NAME}"
 
                 }}
                 
